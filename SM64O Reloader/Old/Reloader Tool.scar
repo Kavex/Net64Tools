@@ -1,0 +1,58 @@
+program New;
+var
+
+CheckmarkServer, CreateSever: TSCARBitmap;
+
+x, y: Integer;
+ClientBox: TBox;
+
+ 
+
+procedure SetupUI;
+
+begin
+
+  CheckmarkServer := TSCARBitmap.Create('deNrNk9sNwCAIRVmgQ3QGEuZhG4dxF2ZxgxaJN' +
+    'bZp+lCa9H4hGk64yAwTLHdCxDSmboQEJjARcRR3hAQCCqWwRNaD+CKUcFXTAXF' +
+    'KyEnmbJ7atplIrO88EcW75tpC1y4smVmtyG0WOwTHL35UrFhj1LDPqMNegO1F2' +
+    '5lCB8f9UvhA6fdaAXe4KVg=');
+    
+  CreateSever := TSCARBitmap.Create('deNrtVdsRwyAMY4eO4jm6gJdhFa/iUbJJeQbMK' +
+    '6G0vesd+ouj2DLIzlM91LGx8c9gjaAcAJD4e2XOKpo+m5pQIV0WN2V9c2z4oHl' +
+    'S/K0vssy2JNJP27yrcjXBcp2lNpvVbRDRGtlYOBoaMPAoOlxZhwcj+iQ1WboGj' +
+    'Wu4NS2en+qeGbOr75LNW6NpeIa9NoOPs9c100dSfEh2E6FRHkrBz+bntHjsckQ' +
+    '+3m4z1cgB/hgRIAXG5GZN30PNp0xMSBuzj8lW03giWn0K5YXnnUTixm1OLBY3S' +
+    'jWfpXL70E/OU222Ni3lPlQoLGkVxgCq0rQFuZxMuc4rvvzKPgGIEe2T5/6bbqs' +
+    'IkUzFVkmbAMCpJecnvyVosILk6molL5T7C+AqQYN8/d/c2NjY2NhYwQsMuWBJ');
+
+ClientBox := GetClient.ImageArea;
+end;
+
+begin
+SetupUI;
+
+Repeat
+
+if FindBitmap(x, y, CheckmarkServer, 0, 0, ClientBox.X2, ClientBox.Y2) then
+begin
+MoveMouse(x, y);
+Wait(100);
+ClickMouse(x, y, mbLeft);
+Wait(1000);
+
+if FindBitmap(x, y, CreateSever, 0, 0, ClientBox.X2, ClientBox.Y2) then
+begin
+MoveMouse(x, y);
+Wait(100);
+ClickMouse(x, y, mbLeft);
+Wait(200);
+end;
+end;
+
+
+
+until (False);
+
+CheckmarkServer.Free;
+CreateSever.Free;
+end.
